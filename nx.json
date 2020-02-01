@@ -1,0 +1,22 @@
+{
+  "npmScope": "nx06",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "app06": {
+      "tags": []
+    },
+    "app06-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app06"]
+    }
+  }
+}
