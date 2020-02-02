@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx06/material": ["libs/material/src/index.ts"]
+      "@nx06/material": ["libs/material/src/index.ts"],
+      "@nx06/ui-login": ["libs/ui-login/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
