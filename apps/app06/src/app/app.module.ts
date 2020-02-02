@@ -10,6 +10,7 @@ import { UiLoginModule } from '@nx06/ui-login';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
+import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ProjectsListComponent } from './projects/projects-list/projects-list.co
     PageNotFoundComponent,
     ProjectsComponent,
     ProjectsListComponent,
+    ProjectDetailComponent,
   ],
   imports: [
     AppRoutingModule,

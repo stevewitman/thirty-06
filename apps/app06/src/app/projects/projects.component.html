@@ -1,1 +1,14 @@
-<nx06-projects-list [projects]="projects$" ></nx06-projects-list>
+<div class="row">
+  <div class="column">
+    <nx06-projects-list
+    [projects]="projects$"
+    (selecting)=selectProject($event)
+  ></nx06-projects-list>
+  </div>
+  <div class="column">
+    <nx06-project-detail
+      [project]="selectedProject"
+      [form]="form"
+    ></nx06-project-detail>
+  </div>
+</div>
