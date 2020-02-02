@@ -13,7 +13,7 @@ export class ProjectsComponent implements OnInit {
   projects$;
   selectedProject: Project;
   form: FormGroup;
-  
+
 
   constructor(private projectsService: ProjectsService, private fb: FormBuilder) { }
 
@@ -40,4 +40,45 @@ export class ProjectsComponent implements OnInit {
     this.form.patchValue(project);
   }
 
+  updateProject(project) {
+    this.projectsService.updateProject(project)
+      .subscribe(result => {
+        this.getProjects();
+      });
+  }
+
+  cancel () {
+    this.resetProject();
+  }
+
+  resetProject() {
+    const emptyProject: Project = {
+      id: null,
+      title: '',
+      details: '',
+      importanceLevel: 0
+    }
+    this.selectProject(emptyProject);
+  }
+
+  deleteProject(project) {
+    this.projectsService.deleteProject(project.id)
+      .subscribe(result => this.getProjects());
+  }
+
+  saveProject(project: Project) {
+    if (!project.id) {
+      this.createProject(project);
+    } else {
+      this.updateProject(project);
+    }
+  }
+
+  createProject(project) {
+    this.projectsService.createProject(project)
+      .subscribe(result => {
+        this.getProjects();
+      });
+  }
+  
 }

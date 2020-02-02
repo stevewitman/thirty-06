@@ -12,6 +12,7 @@
         style="cursor: pointer">
         <h4 mat-line>{{ project.title }}</h4>
         <p mat-line>{{ project.details }}</p>
+        <button mat-icon-button *ngIf="!readonly" (click)="deleting.emit(project);$event.stopImmediatePropagation()">X</button>
       </mat-list-item>
     </mat-list>
   </mat-card-content>

@@ -1,34 +1,31 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { Project } from '@nx06/core-data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
 
-  projects = [
-    {
-      "id": 1,
-      "title": "project 1",
-      "details": "this is project 1",
-      "importanceLevel": 100
-    },
-    {
-      "id": 2,
-      "title": "project 2",
-      "details": "this is project 2",
-      "importanceLevel": 75
-    },
-    {
-      "id": 3,
-      "title": "project 3",
-      "details": "this is project 3",
-      "importanceLevel": 50
-    }
-  ]
+  private URL = 'https://server-30-x-30.herokuapp.com/projects'
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   getProjects() {
-    return this.projects
+    return this.httpClient.get(this.URL);
   }
+
+  createProject(project: Project) {
+    return this.httpClient.post(this.URL, project);
+  }
+
+  updateProject(project: Project) {
+    return this.httpClient.patch(this.URL + '/' + project.id, project)
+  }
+
+  deleteProject(id: string) {
+    return this.httpClient.delete(this.URL + '/' + id)
+  }
+
 }

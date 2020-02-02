@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -15,6 +15,8 @@ export class ProjectDetailComponent implements OnInit {
     if (value) this.originalTitle = value.title;
     this.currentProject = Object.assign({}, value);
   };
+  @Output() saving = new EventEmitter();
+  @Output() cancelling = new EventEmitter();
 
   constructor() { }
 
@@ -23,5 +25,9 @@ export class ProjectDetailComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form.value)
+    this.saving.emit(this.form.value);
+  }
+  onClear() {
+    this.cancelling.emit(this.currentProject);
   }
 }
