@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ProjectsService } from '@nx06/core-data';
+
 @Component({
   selector: 'nx06-projects',
   templateUrl: './projects.component.html',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor() { }
+  projects$;
+
+  constructor(private projectsService: ProjectsService) { }
 
   ngOnInit() {
+    this.getProjects();
+  }
+
+  getProjects() {
+    this.projects$ = (this.projectsService.getProjects())
   }
 
 }
